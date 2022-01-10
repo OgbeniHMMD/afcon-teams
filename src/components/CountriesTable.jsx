@@ -4,20 +4,36 @@ import TopNavigation from "./TopNavigation";
 export default function CountriesTable() {
   const [countries, setCountries] = useState([
     {
+      rank: 1,
       name: "Nigeria",
       alias: "Super eagles",
       coach: "Yakubu",
-      rank: 1,
       captain: "JJ Okocha",
     },
     {
+      rank: 2,
       name: "S/Africa",
       alias: "Bafana Bafana",
       coach: "Tunji",
-      rank: 2,
       captain: "Hammed",
     },
   ]);
+
+  const dummyCountry = {
+    rank: 1,
+    name: "Nigeria",
+    alias: "Super eagles",
+    coach: "Yakubu",
+    captain: "JJ Okocha",
+  };
+
+  const appendCountry = (newCountry) => {
+    setCountries([...countries, newCountry]);
+  };
+
+  const editCountry = (newCountry) => {
+    setCountries([...countries, newCountry]);
+  };
 
   return (
     <main class="container mx-auto px-4">
@@ -59,7 +75,12 @@ export default function CountriesTable() {
                       />
                     </svg>
                   </button>
-                  <button className="rounded h-full p-2 hover:bg-gray-100">
+                  <button
+                    className="rounded h-full p-2 hover:bg-gray-100"
+                    onClick={() => {
+                      editCountry(dummyCountry);
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-4 w-4"
@@ -76,16 +97,42 @@ export default function CountriesTable() {
                     </svg>
                   </button>
 
-                  <input
-                    type="checkbox"
-                    class="p-1 accent-gray-900 hover:accent-red-700"
-                  />
+                  <label className="rounded flex h-full p-2 hover:bg-gray-100 ">
+                    <input
+                      type="checkbox"
+                      class="p-1 accent-gray-900 hover:accent-red-700"
+                    />
+                  </label>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </section>
+
+      <div className="py-8">
+        <button
+          className="bg-white bg-gray-50 border-2 py-2 px-4"
+          onClick={() => {
+            appendCountry(dummyCountry);
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </main>
   );
 }
