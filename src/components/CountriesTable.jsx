@@ -1,8 +1,11 @@
 import { useState } from "react";
+import CountryFormModal from "./CountryFormModal";
 import CountryTable from "./countryTable";
 import TopNavigation from "./TopNavigation";
 
 export default function CountriesTable() {
+  let [modalStatus, setModalStatus] = useState(false);
+
   const [countries, setCountries] = useState([
     {
       rank: 1,
@@ -19,14 +22,6 @@ export default function CountriesTable() {
       captain: "Hammed",
     },
   ]);
-
-  const dummyCountry = {
-    rank: 3,
-    name: "Nigeria",
-    alias: "Super eagles",
-    coach: "Yakubu",
-    captain: "JJ Okocha",
-  };
 
   const appendCountry = (newCountry) => {
     setCountries([...countries, newCountry]);
@@ -73,7 +68,7 @@ export default function CountriesTable() {
         <button
           className="bg-gray-50 border-2 py-2 px-4"
           onClick={() => {
-            appendCountry(dummyCountry);
+            setModalStatus(true);
           }}
         >
           <svg
@@ -92,6 +87,15 @@ export default function CountriesTable() {
           </svg>
         </button>
       </div>
+
+      {modalStatus && (
+        <CountryFormModal
+          modalStatus={modalStatus}
+          appendCountry={appendCountry}
+          setModalStatus={setModalStatus}
+          data={{}}
+        />
+      )}
     </main>
   );
 }
