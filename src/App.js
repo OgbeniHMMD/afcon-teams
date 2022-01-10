@@ -1,7 +1,9 @@
+import CountriesTable from "./components/CountriesTable";
+
 export default function App() {
   return (
-    <div>
-      <h1 className="font-bold text-3xl underline">Hello world!</h1>
+    <div className="min-h-screen bg-gray-100">
+      <CountriesTable />
     </div>
   );
 }
