@@ -20,7 +20,7 @@ export default function CountriesTable() {
   ]);
 
   const dummyCountry = {
-    rank: 1,
+    rank: 3,
     name: "Nigeria",
     alias: "Super eagles",
     coach: "Yakubu",
@@ -31,34 +31,35 @@ export default function CountriesTable() {
     setCountries([...countries, newCountry]);
   };
 
-  const editCountry = (newCountry) => {
-    setCountries([...countries, newCountry]);
+  const editCountry = (id) => {
+    const Countries = countries.filter((el, i) => i != id);
+    setCountries(Countries);
   };
 
   return (
-    <main class="container mx-auto px-4">
+    <main className="container mx-auto px-4">
       <TopNavigation />
 
-      <section class="bg-white border rounded w-full table table-auto">
-        <div class="table-header-group">
-          <div class="font-medium text-lg p-4 uppercase table-row">
-            <div class="text-left p-2 table-cell">Rank</div>
-            <div class="text-left p-2 table-cell">Country</div>
-            <div class="text-left p-2 table-cell">Alias</div>
-            <div class="text-left p-2 table-cell">Captain</div>
-            <div class="text-left p-2 table-cell"></div>
+      <section className="bg-white border rounded w-full table table-auto">
+        <div className="table-header-group">
+          <div className="font-medium text-lg p-4 uppercase table-row">
+            <div className="text-left p-2 table-cell">Rank</div>
+            <div className="text-left p-2 table-cell">Country</div>
+            <div className="text-left p-2 table-cell">Alias</div>
+            <div className="text-left p-2 table-cell">Captain</div>
+            <div className="text-left p-2 table-cell"></div>
           </div>
         </div>
 
-        <div class="table-row-group">
-          {countries.map((country) => (
-            <div class="text-sm table-row">
-              <div class="border-t p-2 table-cell">{country.rank}</div>
-              <div class="border-t p-2 table-cell">{country.name}</div>
-              <div class="border-t p-2 table-cell">{country.alias}</div>
-              <div class="border-t p-2 table-cell">{country.captain}</div>
-              <div class="border-t p-2 table-cell">
-                <div class="flex space-x-4 items-center justify-end">
+        <div className="table-row-group">
+          {countries.map((country, i) => (
+            <div className="text-sm table-row">
+              <div className="border-t p-2 table-cell">{i + 1}</div>
+              <div className="border-t p-2 table-cell">{country.name}</div>
+              <div className="border-t p-2 table-cell">{country.alias}</div>
+              <div className="border-t p-2 table-cell">{country.captain}</div>
+              <div className="border-t p-2 table-cell">
+                <div className="flex space-x-4 items-center justify-end">
                   <button className="rounded h-full p-2 hover:bg-gray-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +79,7 @@ export default function CountriesTable() {
                   <button
                     className="rounded h-full p-2 hover:bg-gray-100"
                     onClick={() => {
-                      editCountry(dummyCountry);
+                      editCountry(i);
                     }}
                   >
                     <svg
@@ -100,7 +101,7 @@ export default function CountriesTable() {
                   <label className="rounded flex h-full p-2 hover:bg-gray-100 ">
                     <input
                       type="checkbox"
-                      class="p-1 accent-gray-900 hover:accent-red-700"
+                      className="p-1 accent-gray-900 hover:accent-red-700"
                     />
                   </label>
                 </div>
@@ -112,7 +113,7 @@ export default function CountriesTable() {
 
       <div className="py-8">
         <button
-          className="bg-white bg-gray-50 border-2 py-2 px-4"
+          className="bg-gray-50 border-2 py-2 px-4"
           onClick={() => {
             appendCountry(dummyCountry);
           }}
