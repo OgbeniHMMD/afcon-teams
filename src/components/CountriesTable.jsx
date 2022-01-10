@@ -66,11 +66,12 @@ export default function CountriesTable() {
 
       <div className="py-8">
         <button
-          className="bg-gray-50 border-2 py-2 px-4"
+          className="rounded flex space-x-4 bg-gray-50 border-2 text-sm py-2 px-4 items-center hover:bg-gray-200"
           onClick={() => {
             setModalStatus(true);
           }}
         >
+          <div>Add New Country</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"

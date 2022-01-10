@@ -31,24 +31,20 @@ export default function CountryFormModal({
           ></div>
 
           <div className="rounded-lg max-h-screen text-left w-full p-4 transform transition-all inline-block align-bottom overflow-y-auto sm:my-8 sm:align-middle md:w-5/6 lg:w-3/4 xl:w-2/3">
-            <section className="bg-white rounded p-4 8">
-              <nav className="text-right pb-4">
+            <section className="bg-white rounded p-8">
+              <nav className="flex text-right pb-4 justify-between item">
+                <header className="font-bold text-center text-xl text-gray-900">
+                  Enter the country Information
+                </header>
+
                 <button
                   type="button"
-                  className="rounded-full font-medium h-8 text-lg text-dark w-8 self-end inline-flex justify-center items-center hover:bg-primary-lightest hover:bg-gray-200"
+                  className="border rounded font-medium h-8 text-lg text-dark w-8 self-end inline-flex justify-center items-center hover:bg-primary-lightest hover:bg-gray-200"
                   onClick={() => setModalStatus(false)}
                 >
                   &times;
                 </button>
               </nav>
-              <header className="text-center">
-                <div className="font-bold text-dark-light text-xl md:tracking-wider md:text-3xl">
-                  Hey, what would you like to do today?
-                </div>
-                <div className="text-sm text-dark-light py-2 md:text-base">
-                  Explore Vasiti’s diverse ecosystem
-                </div>
-              </header>
               <section className="flex-wrap md:flex">
                 <div className="py-8">
                   <button
@@ -57,21 +53,7 @@ export default function CountryFormModal({
                       appendCountry(dummyCountry);
                     }}
                   >
-                    Button
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    Submit
                   </button>
                 </div>
               </section>
