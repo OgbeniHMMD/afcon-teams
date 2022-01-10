@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function CountryFormModal({
   data,
@@ -6,6 +7,9 @@ export default function CountryFormModal({
   setModalStatus,
   appendCountry,
 }) {
+  const { register, handleSubmit } = useForm();
+  const [result, setResult] = useState("");
+
   const dummyCountry = {
     rank: 3,
     name: "Nigeria",
@@ -14,9 +18,14 @@ export default function CountryFormModal({
     captain: "JJ Okocha",
   };
 
+  const addCountry = (data) => {
+    appendCountry(data);
+    setModalStatus(false);
+  };
+
   return (
     <>
-      <span onClick={() => setModalStatus(!modalStatus)}>xxx</span>
+      <span onClick={() => setModalStatus(!modalStatus)} />
       {modalStatus && (
         <div
           className="flex min-h-screen inset-0 z-50 fixed overflow-y-scroll items-end justify-center md:items-center"
@@ -31,7 +40,10 @@ export default function CountryFormModal({
           ></div>
 
           <div className="rounded-lg max-h-screen text-left w-full p-4 transform transition-all inline-block align-bottom overflow-y-auto sm:my-8 sm:align-middle md:w-5/6 lg:w-3/4 xl:w-2/3">
-            <section className="bg-white rounded p-8">
+            <form
+              className="bg-white rounded p-8"
+              onSubmit={handleSubmit((data) => addCountry(data))}
+            >
               <nav className="flex text-right pb-4 justify-between item">
                 <header className="font-bold text-center text-xl text-gray-900">
                   Enter the country Information
@@ -45,25 +57,43 @@ export default function CountryFormModal({
                   &times;
                 </button>
               </nav>
-              <section className="flex-wrap md:flex">
-                <div className="py-8">
-                  <button
-                    className="bg-gray-50 border-2 py-2 px-4"
-                    onClick={() => {
-                      appendCountry(dummyCountry);
-                    }}
-                  >
-                    Submit
-                  </button>
-                </div>
+
+              <div className="flex flex-col space-y-4 py-4">
+                <input
+                  {...register("name")}
+                  placeholder="Country"
+                  className="border rounded text-sm py-2 px-4"
+                />
+                <input
+                  {...register("alias")}
+                  placeholder="Alias"
+                  className="border rounded text-sm py-2 px-4"
+                />
+                <input
+                  {...register("coach")}
+                  placeholder="Coach"
+                  className="border rounded text-sm py-2 px-4"
+                />
+                <input
+                  {...register("captain")}
+                  placeholder="Captain"
+                  className="border rounded text-sm py-2 px-4"
+                />
+              </div>
+
+              <section className="flex space-x-4 pt-4 justify-end item-center">
+                <nav
+                  className="bg-gray-50 border-2 py-2 px-4"
+                  onClick={() => setModalStatus(false)}
+                >
+                  Close
+                </nav>
+
+                <button type="submit" className="bg-gray-50 border-2 py-2 px-4">
+                  Submit
+                </button>
               </section>
-              <nav
-                className="border border-primary rounded font-medium text-dark text-center text-sm p-2 md:hidden hover:bg-primary-lightest"
-                onClick={() => setModalStatus(false)}
-              >
-                Close
-              </nav>
-            </section>
+            </form>
           </div>
         </div>
       )}

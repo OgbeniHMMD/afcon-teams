@@ -55,6 +55,7 @@ export default function CountriesTable() {
         <div className="table-row-group">
           {countries.map((country, i) => (
             <CountryTable
+              key={i}
               index={i}
               data={country}
               editCountry={editCountry}
