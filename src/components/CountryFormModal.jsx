@@ -2,26 +2,18 @@ import { Children, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function CountryFormModal({
-  data,
+  country,
   children,
   modalStatus,
   setModalStatus,
   appendCountry,
 }) {
-  const { register, handleSubmit } = useForm();
-  const [result, setResult] = useState("");
-
-  const dummyCountry = {
-    rank: 3,
-    name: "Nigeria",
-    alias: "Super eagles",
-    coach: "Yakubu",
-    captain: "JJ Okocha",
-  };
+  const { register, handleSubmit, reset } = useForm();
 
   const addCountry = (data) => {
     appendCountry(data);
     setModalStatus(false);
+    reset();
   };
 
   return (

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CountryFormModal from "./CountryFormModal";
 
 export default function CountryTable({
   index,
-  data,
+  country,
   editCountry,
   deleteCountry,
   checkedList,
@@ -13,31 +13,30 @@ export default function CountryTable({
   appendCountry,
   setModalStatus,
 }) {
-  const status = !!checkedList.filter((el) => el.id == index)[0]?.status;
+  const [status, setStatus] = useState(false);
 
-  const toggleCheckBox = () => {
+  useEffect(() => {
     const CheckedList = checkedList;
-    CheckedList[index] = { id: index, status };
-
+    CheckedList[index] = { id: index, status: status };
     setCheckedList(CheckedList);
-    console.log(CheckedList);
-    console.log(status);
-  };
+
+    setStatus(!!checkedList.filter((el) => el.id === index)[0]?.status);
+  }, [checkedList, index, setCheckedList, status]);
 
   return (
     <div className="text-sm table-row">
       <div className="border-t p-2 table-cell">{index + 1}</div>
-      <div className="border-t p-2 table-cell">{data.name}</div>
-      <div className="border-t p-2 table-cell">{data.alias}</div>
-      <div className="border-t p-2 table-cell">{data.coach}</div>
-      <div className="border-t p-2 table-cell">{data.captain}</div>
+      <div className="border-t p-2 table-cell">{country.name}</div>
+      <div className="border-t p-2 table-cell">{country.alias}</div>
+      <div className="border-t p-2 table-cell">{country.coach}</div>
+      <div className="border-t p-2 table-cell">{country.captain}</div>
       <div className="border-t p-2 table-cell">
         <div className="flex space-x-4 items-center justify-end">
           <CountryFormModal
             modalStatus={modalStatus}
             appendCountry={appendCountry}
             setModalStatus={setModalStatus}
-            data={{}}
+            country={country}
           >
             <button className="rounded h-full p-2 hover:bg-gray-100">
               <svg
@@ -82,7 +81,7 @@ export default function CountryTable({
           <label className="rounded flex h-full p-2 hover:bg-gray-100 ">
             <input
               onChange={() => {
-                toggleCheckBox();
+                setStatus(!status);
               }}
               type="checkbox"
               checked={status}
