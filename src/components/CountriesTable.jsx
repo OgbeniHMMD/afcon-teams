@@ -43,10 +43,11 @@ export default function CountriesTable() {
 
       <section className="bg-white border rounded w-full table table-auto">
         <div className="table-header-group">
-          <div className="font-medium text-lg p-4 uppercase table-row">
-            <div className="text-left p-2 table-cell">Rank</div>
+          <div className="font-medium uppercase table-row">
+            <div className="text-left p-2 py-3 table-cell">Rank</div>
             <div className="text-left p-2 table-cell">Country</div>
             <div className="text-left p-2 table-cell">Alias</div>
+            <div className="text-left p-2 table-cell">Coach</div>
             <div className="text-left p-2 table-cell">Captain</div>
             <div className="text-left p-2 table-cell"></div>
           </div>

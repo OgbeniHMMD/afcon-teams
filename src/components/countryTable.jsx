@@ -9,6 +9,7 @@ export default function CountryTable({
       <div className="border-t p-2 table-cell">{index + 1}</div>
       <div className="border-t p-2 table-cell">{data.name}</div>
       <div className="border-t p-2 table-cell">{data.alias}</div>
+      <div className="border-t p-2 table-cell">{data.coach}</div>
       <div className="border-t p-2 table-cell">{data.captain}</div>
       <div className="border-t p-2 table-cell">
         <div className="flex space-x-4 items-center justify-end">
