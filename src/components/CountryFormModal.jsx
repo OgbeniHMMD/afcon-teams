@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function CountryFormModal({
   data,
+  children,
   modalStatus,
   setModalStatus,
   appendCountry,
@@ -25,7 +26,7 @@ export default function CountryFormModal({
 
   return (
     <>
-      <span onClick={() => setModalStatus(!modalStatus)} />
+      <span onClick={() => setModalStatus(!modalStatus)}>{children}</span>
       {modalStatus && (
         <div
           className="flex min-h-screen inset-0 z-50 fixed overflow-y-scroll items-end justify-center md:items-center"
@@ -34,7 +35,7 @@ export default function CountryFormModal({
           aria-modal="true"
         >
           <div
-            className="bg-black bg-opacity-40 inset-0 transition-opacity fixed"
+            className="bg-gray-900 bg-opacity-25 inset-0 transition-opacity fixed"
             aria-hidden="true"
             onClick={() => setModalStatus(!modalStatus)}
           ></div>
@@ -60,22 +61,26 @@ export default function CountryFormModal({
 
               <div className="flex flex-col space-y-4 py-4">
                 <input
-                  {...register("name")}
+                  {...register("name", { required: true })}
+                  required
                   placeholder="Country"
                   className="border rounded text-sm py-2 px-4"
                 />
                 <input
-                  {...register("alias")}
+                  {...register("alias", { required: true })}
+                  required
                   placeholder="Alias"
                   className="border rounded text-sm py-2 px-4"
                 />
                 <input
-                  {...register("coach")}
+                  {...register("coach", { required: true })}
+                  required
                   placeholder="Coach"
                   className="border rounded text-sm py-2 px-4"
                 />
                 <input
-                  {...register("captain")}
+                  {...register("captain", { required: true })}
+                  required
                   placeholder="Captain"
                   className="border rounded text-sm py-2 px-4"
                 />
