@@ -16,6 +16,7 @@ specifiers:
   postcss: ^8.4.5
   react: ^17.0.2
   react-dom: ^17.0.2
+  react-hook-form: ^7.22.5
   react-scripts: 5.0.0
   tailwindcss: ^3.0.12
   typescript: ^4.5.4
@@ -33,6 +34,7 @@ dependencies:
   postcss: 8.4.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-hook-form: 7.22.5_react@17.0.2
   react-scripts: 5.0.0_e412d34da569417fe3b49c1c70aa2a66
   tailwindcss: 3.0.12_ef48b3b8837f8a23677bffe8f9cd866d
   typescript: 4.5.4
@@ -7594,6 +7596,15 @@ packages:
 
   /react-error-overlay/6.0.10:
     resolution: {integrity: sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA==}
+    dev: false
+
+  /react-hook-form/7.22.5_react@17.0.2:
+    resolution: {integrity: sha512-Q2zaeQFXdVQ8l3hcywhltH+Nzj4vo50wMVujHDVN/1Xy9IOaSZJwYBXA2CYTpK6rq41fnXviw3jTLb04c7Gu9Q==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-is/16.13.1:
